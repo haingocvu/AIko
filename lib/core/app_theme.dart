@@ -11,6 +11,21 @@ class AppTheme {
   static const Color accentGreen = Color(0xFF4CAF82);
   static const Color accentBlue = Color(0xFF4ECDC4);
   static const Color surfaceCard = Color(0xFF1E2A45);
+  static const Color glassWhite = Color(0x1AFFFFFF);
+  static const Color glassBlack = Color(0x33000000);
+  
+  static const LinearGradient premiumGradient = LinearGradient(
+    colors: [Color(0xFF1A1A2E), Color(0xFF16213E), Color(0xFF0F3460)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const LinearGradient accentGradient = LinearGradient(
+    colors: [Color(0xFFE94560), Color(0xFFFF2E63)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
   static const Color textPrimary = Color(0xFFF5F5F5);
   static const Color textSecondary = Color(0xFFB0BEC5);
   static const Color textHint = Color(0xFF607D8B);
