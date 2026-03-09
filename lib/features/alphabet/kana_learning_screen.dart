@@ -133,7 +133,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             child: LinearProgressIndicator(
               value: progress,
               backgroundColor: Colors.white.withOpacity(0.1),
-              valueColor: const AlwaysStoppedAnimation(AppTheme.accentGold),
+              valueColor: const AlwaysStoppedAnimation(AppTheme.accentCyan),
               minHeight: 12,
             ),
           ),
@@ -158,7 +158,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
                         _getQuestionTitle(question.type),
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontSize: 24,
-                          color: AppTheme.accentBlue,
+                          color: AppTheme.accentCyan,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -198,18 +198,21 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             child: Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: AppTheme.accentGold.withOpacity(0.15),
+                color: AppTheme.accentCyan.withOpacity(0.15),
                 shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(color: AppTheme.accentCyan.withOpacity(0.2), blurRadius: 20, spreadRadius: 2),
+                ],
               ),
-              child: const Icon(Icons.volume_up_rounded, size: 64, color: AppTheme.accentGold),
+              child: const Icon(Icons.volume_up_rounded, size: 64, color: AppTheme.accentCyan),
             ),
-          ).animate().scale(duration: 300.ms, curve: Curves.easeOutBack),
+          ).animate(onPlay: (c) => c.repeat(reverse: true)).shimmer(duration: 2.seconds).scale(duration: 300.ms, curve: Curves.easeOutBack),
         );
       case QuestionType.kanaToRomaji:
         return Center(
           child: Text(
             question.correctKana.japanese,
-            style: AppTheme.japaneseStyle(fontSize: 80, color: AppTheme.accentGold),
+            style: AppTheme.japaneseStyle(fontSize: 80, fontWeight: FontWeight.bold, color: AppTheme.accentCyan),
           ).animate().fadeIn(duration: 400.ms).slideY(begin: 0.2, end: 0),
         );
       case QuestionType.romajiToKana:
@@ -246,8 +249,8 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             bgColor = Colors.red.withOpacity(0.1);
           }
         } else if (isSelected) {
-          borderColor = AppTheme.accentGold;
-          bgColor = AppTheme.accentGold.withOpacity(0.1);
+          borderColor = AppTheme.accentCyan;
+          bgColor = AppTheme.accentCyan.withOpacity(0.1);
         }
 
         String displayText = '';
@@ -329,16 +332,17 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor: _hasAnswered
                   ? (_isCorrect ? Colors.green : Colors.red)
-                  : AppTheme.accentGold,
-              disabledBackgroundColor: AppTheme.primaryLight,
+                  : AppTheme.accentCyan,
+              disabledBackgroundColor: Colors.white.withOpacity(0.1),
               padding: const EdgeInsets.symmetric(vertical: 16),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             ),
             child: Text(
-              !_hasAnswered ? 'Kiểm tra' : 'Tiếp tục',
+              !_hasAnswered ? 'KIỂM TRA' : 'TIẾP TỤC',
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1.2,
                 color: (_selectedAnswer == null) ? AppTheme.textHint : Colors.white,
               ),
             ),

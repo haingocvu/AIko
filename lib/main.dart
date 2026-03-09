@@ -13,7 +13,7 @@ class NihonGoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'NihonGo! - Luyện tiếng Nhật',
+      title: 'AIko - Trợ lý học tiếng Nhật',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
       routerConfig: appRouter,

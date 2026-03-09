@@ -53,7 +53,7 @@ class KanaCard extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: (kana.isHiragana ? AppTheme.accentGold : AppTheme.accentBlue).withOpacity(0.1),
+                      color: (kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta).withOpacity(0.15),
                     ),
                   ),
                 ),
@@ -67,6 +67,13 @@ class KanaCard extends StatelessWidget {
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
+                        ).copyWith(
+                          shadows: [
+                            Shadow(
+                              color: (kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta).withOpacity(0.5),
+                              blurRadius: 10,
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -88,7 +95,7 @@ class KanaCard extends StatelessWidget {
         ),
       ),
     ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-     .shimmer(duration: 3.seconds, color: Colors.white.withOpacity(0.05))
+     .shimmer(duration: 4.seconds, color: (kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta).withOpacity(0.1))
      .animate(target: 1)
      .scale(duration: 200.ms, curve: Curves.easeOut);
   }

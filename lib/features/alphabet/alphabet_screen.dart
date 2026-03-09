@@ -58,33 +58,57 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
   }
 
   Widget _buildHeader() {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.fromLTRB(24, 20, 24, 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Bảng chữ cái',
-                style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 32),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                _isHiragana ? 'Mềm mại & Uyển chuyển' : 'Cứng cáp & Góc cạnh',
-                style: TextStyle(color: AppTheme.accentBlue.withOpacity(0.8), fontWeight: FontWeight.w500),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ShaderMask(
+                  shaderCallback: (bounds) => AppTheme.accentGradient.createShader(bounds),
+                  child: Text(
+                    'AIko',
+                    style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'Trợ lý học bảng chữ cái',
+                  style: TextStyle(
+                    color: AppTheme.accentCyan.withOpacity(0.7),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ],
+            ),
           ),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: AppTheme.accentCyan.withOpacity(0.1),
               shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: AppTheme.accentCyan.withOpacity(0.15),
+                  blurRadius: 20,
+                  spreadRadius: 2,
+                ),
+              ],
             ),
-            child: const Icon(Icons.translate_rounded, color: AppTheme.accentGold),
-          ),
+            child: const Icon(Icons.auto_awesome_rounded, color: AppTheme.accentCyan, size: 28),
+          ).animate(onPlay: (c) => c.repeat(reverse: true))
+           .scale(duration: 2.seconds, begin: const Offset(1, 1), end: const Offset(1.15, 1.15), curve: Curves.easeInOut)
+           .shimmer(duration: 3.seconds, color: AppTheme.accentCyan.withOpacity(0.5)),
         ],
       ),
     );
@@ -190,7 +214,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
       children: [
         Text(main, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
         const SizedBox(width: 8),
-        Text('($sub)', style: const TextStyle(fontSize: 14, color: AppTheme.accentBlue, fontWeight: FontWeight.w500)),
+        Text('($sub)', style: const TextStyle(fontSize: 14, color: AppTheme.accentCyan, fontWeight: FontWeight.w500)),
         const SizedBox(width: 12),
         Expanded(child: Divider(color: Colors.white.withOpacity(0.1))),
       ],
