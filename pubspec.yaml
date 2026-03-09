@@ -1,0 +1,53 @@
+name: nihongo_app
+description: "Japanese Language Learning App - Minna no Nihongo N5/N4"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Navigation
+  go_router: ^14.2.0
+  
+  # Audio
+  just_audio: ^0.9.40
+  
+  # TTS
+  flutter_tts: ^4.0.2
+  
+  # Speech to text
+  speech_to_text: ^6.6.2
+  
+  # UI
+  google_fonts: ^6.2.1
+  flutter_animate: ^4.5.0
+  
+  # Utils
+  shared_preferences: ^2.2.3
+  collection: ^1.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/data/
+    - assets/images/
+  
+  fonts:
+    - family: NotoSansJP
+      fonts:
+        - asset: assets/fonts/NotoSansJP-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoSansJP-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/NotoSansJP-Bold.ttf
+          weight: 700

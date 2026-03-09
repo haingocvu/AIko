@@ -1,0 +1,407 @@
+{
+  "lessons": [
+    {
+      "id": "n5_l1",
+      "lesson_number": 1,
+      "level": "N5",
+      "title": "はじめまして",
+      "title_vi": "Xin chào / Tự giới thiệu",
+      "grammar_focus": "～は～です",
+      "vocabulary": [
+        {
+          "id": "n5_l1_001",
+          "japanese": "わたし",
+          "reading": "わたし",
+          "romaji": "watashi",
+          "meaning_vi": "tôi",
+          "example_ja": "わたしはがくせいです。",
+          "example_vi": "Tôi là sinh viên.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l1_002",
+          "japanese": "あなた",
+          "reading": "あなた",
+          "romaji": "anata",
+          "meaning_vi": "bạn / anh / chị",
+          "example_ja": "あなたはせんせいですか？",
+          "example_vi": "Bạn có phải là giáo viên không?",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l1_003",
+          "japanese": "がくせい",
+          "reading": "がくせい",
+          "romaji": "gakusei",
+          "meaning_vi": "sinh viên / học sinh",
+          "example_ja": "わたしはがくせいです。",
+          "example_vi": "Tôi là sinh viên.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l1_004",
+          "japanese": "せんせい",
+          "reading": "せんせい",
+          "romaji": "sensei",
+          "meaning_vi": "giáo viên / thầy cô",
+          "example_ja": "やまださんはせんせいです。",
+          "example_vi": "Anh Yamada là giáo viên.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l1_005",
+          "japanese": "にほん",
+          "reading": "にほん",
+          "romaji": "nihon",
+          "meaning_vi": "Nhật Bản",
+          "example_ja": "やまださんはにほんじんです。",
+          "example_vi": "Anh Yamada là người Nhật.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l1_006",
+          "japanese": "はじめまして",
+          "reading": "はじめまして",
+          "romaji": "hajimemashite",
+          "meaning_vi": "Xin chào (lần đầu gặp mặt)",
+          "example_ja": "はじめまして、わたしはマリアです。",
+          "example_vi": "Xin chào, tôi là Maria.",
+          "word_type": "cụm từ"
+        },
+        {
+          "id": "n5_l1_007",
+          "japanese": "よろしく おねがいします",
+          "reading": "よろしく おねがいします",
+          "romaji": "yoroshiku onegaishimasu",
+          "meaning_vi": "Rất vui được làm quen",
+          "example_ja": "はじめまして、よろしくおねがいします。",
+          "example_vi": "Xin chào, rất vui được làm quen.",
+          "word_type": "cụm từ"
+        },
+        {
+          "id": "n5_l1_008",
+          "japanese": "なん / なに",
+          "reading": "なん",
+          "romaji": "nan / nani",
+          "meaning_vi": "gì / điều gì",
+          "example_ja": "おなまえはなんですか？",
+          "example_vi": "Tên bạn là gì?",
+          "word_type": "danh từ"
+        }
+      ],
+      "grammar_points": [
+        {
+          "pattern": "～は ～です",
+          "explanation_vi": "Câu nhận diện: A là B. Trợ từ は (wa) đánh dấu chủ đề câu.",
+          "examples": [
+            "わたしはがくせいです。(Tôi là sinh viên.)",
+            "これはほんです。(Đây là quyển sách.)",
+            "やまださんはせんせいです。(Anh Yamada là giáo viên.)"
+          ]
+        },
+        {
+          "pattern": "～は ～ですか？",
+          "explanation_vi": "Câu hỏi Yes/No: A có phải là B không? Thêm か vào cuối câu です để tạo câu hỏi.",
+          "examples": [
+            "あなたはがくせいですか？(Bạn có phải là sinh viên không?)",
+            "やまださんはせんせいですか？(Anh Yamada có phải là giáo viên không?)"
+          ]
+        }
+      ],
+      "listening_exercises": [
+        {
+          "id": "n5_l1_listen_001",
+          "title": "Hội thoại: Lần đầu gặp mặt",
+          "transcript": [
+            {"speaker": "マリア", "text": "はじめまして。わたしはマリアです。"},
+            {"speaker": "やまだ", "text": "はじめまして。わたしはやまだです。よろしくおねがいします。"},
+            {"speaker": "マリア", "text": "こちらこそ、よろしくおねがいします。やまださんはせんせいですか？"},
+            {"speaker": "やまだ", "text": "はい、そうです。マリアさんはがくせいですか？"},
+            {"speaker": "マリア", "text": "はい、わたしはがくせいです。"},
+            {"speaker": "やまだ", "text": "そうですか。"}
+          ],
+          "questions": [
+            {
+              "question_vi": "Yamada-san làm nghề gì?",
+              "options_vi": ["Sinh viên", "Giáo viên", "Bác sĩ", "Kỹ sư"],
+              "correct_index": 1
+            },
+            {
+              "question_vi": "Maria-san là gì?",
+              "options_vi": ["Giáo viên", "Bác sĩ", "Sinh viên", "Nhân viên văn phòng"],
+              "correct_index": 2
+            }
+          ]
+        }
+      ],
+      "speaking_exercises": [
+        {
+          "id": "n5_l1_speak_001",
+          "instruction_vi": "Tự giới thiệu bản thân theo mẫu:",
+          "template": "はじめまして。わたしは【tên】です。よろしくおねがいします。",
+          "example_text": "はじめまして。わたしはたなかです。よろしくおねがいします。",
+          "example_romaji": "Hajimemashite. Watashi wa Tanaka desu. Yoroshiku onegaishimasu.",
+          "example_vi": "Xin chào. Tôi là Tanaka. Rất vui được làm quen."
+        },
+        {
+          "id": "n5_l1_speak_002",
+          "instruction_vi": "Trả lời câu hỏi: あなたはがくせいですか？",
+          "template": "はい、わたしはがくせいです。",
+          "example_text": "はい、わたしはがくせいです。",
+          "example_romaji": "Hai, watashi wa gakusei desu.",
+          "example_vi": "Vâng, tôi là sinh viên."
+        }
+      ]
+    },
+    {
+      "id": "n5_l2",
+      "lesson_number": 2,
+      "level": "N5",
+      "title": "これは なんですか",
+      "title_vi": "Đây là gì?",
+      "grammar_focus": "これ・それ・あれ",
+      "vocabulary": [
+        {
+          "id": "n5_l2_001",
+          "japanese": "これ",
+          "reading": "これ",
+          "romaji": "kore",
+          "meaning_vi": "cái này (gần người nói)",
+          "example_ja": "これはほんです。",
+          "example_vi": "Đây là quyển sách.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l2_002",
+          "japanese": "それ",
+          "reading": "それ",
+          "romaji": "sore",
+          "meaning_vi": "cái đó (gần người nghe)",
+          "example_ja": "それはなんですか？",
+          "example_vi": "Cái đó là gì?",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l2_003",
+          "japanese": "あれ",
+          "reading": "あれ",
+          "romaji": "are",
+          "meaning_vi": "cái kia (xa cả hai người)",
+          "example_ja": "あれはじしょです。",
+          "example_vi": "Cái kia là từ điển.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l2_004",
+          "japanese": "ほん",
+          "reading": "ほん",
+          "romaji": "hon",
+          "meaning_vi": "sách / quyển sách",
+          "example_ja": "これはほんです。",
+          "example_vi": "Đây là quyển sách.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l2_005",
+          "japanese": "じしょ",
+          "reading": "じしょ",
+          "romaji": "jisho",
+          "meaning_vi": "từ điển",
+          "example_ja": "あれはじしょです。",
+          "example_vi": "Cái kia là từ điển.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l2_006",
+          "japanese": "かばん",
+          "reading": "かばん",
+          "romaji": "kaban",
+          "meaning_vi": "túi / cặp",
+          "example_ja": "これはあなたのかばんですか？",
+          "example_vi": "Đây có phải túi của bạn không?",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l2_007",
+          "japanese": "の",
+          "reading": "の",
+          "romaji": "no",
+          "meaning_vi": "của (trợ từ sở hữu)",
+          "example_ja": "これはわたしのほんです。",
+          "example_vi": "Đây là sách của tôi.",
+          "word_type": "trợ từ"
+        }
+      ],
+      "grammar_points": [
+        {
+          "pattern": "これ・それ・あれ は ～です",
+          "explanation_vi": "Chỉ định vật thể theo khoảng cách: これ (cái này), それ (cái đó), あれ (cái kia).",
+          "examples": [
+            "これはほんです。(Đây là quyển sách.)",
+            "それはなんですか？(Cái đó là gì?)",
+            "あれはじしょです。(Cái kia là từ điển.)"
+          ]
+        },
+        {
+          "pattern": "～の～",
+          "explanation_vi": "Trợ từ の biểu thị sở hữu hoặc liên hệ giữa hai danh từ.",
+          "examples": [
+            "わたしのほん (sách của tôi)",
+            "やまださんのかばん (túi của Yamada-san)",
+            "にほんのはな (hoa của Nhật Bản)"
+          ]
+        }
+      ],
+      "listening_exercises": [
+        {
+          "id": "n5_l2_listen_001",
+          "title": "Hội thoại: Hỏi đồ vật",
+          "transcript": [
+            {"speaker": "マリア", "text": "すみません、それはなんですか？"},
+            {"speaker": "やまだ", "text": "これはじしょです。"},
+            {"speaker": "マリア", "text": "あれもじしょですか？"},
+            {"speaker": "やまだ", "text": "いいえ、あれはほんです。"},
+            {"speaker": "マリア", "text": "そうですか。このほんはやまださんのですか？"},
+            {"speaker": "やまだ", "text": "はい、わたしのほんです。"}
+          ],
+          "questions": [
+            {
+              "question_vi": "Yamada-san đang cầm gì?",
+              "options_vi": ["Cuốn sách", "Từ điển", "Cặp sách", "Bút"],
+              "correct_index": 1
+            },
+            {
+              "question_vi": "Vật ở xa (あれ) là gì?",
+              "options_vi": ["Từ điển", "Cặp sách", "Cuốn sách", "Bút"],
+              "correct_index": 2
+            }
+          ]
+        }
+      ],
+      "speaking_exercises": [
+        {
+          "id": "n5_l2_speak_001",
+          "instruction_vi": "Hỏi về đồ vật gần người nghe:",
+          "template": "すみません、それはなんですか？",
+          "example_text": "すみません、それはなんですか？",
+          "example_romaji": "Sumimasen, sore wa nan desu ka?",
+          "example_vi": "Xin lỗi, cái đó là gì vậy?"
+        }
+      ]
+    },
+    {
+      "id": "n5_l3",
+      "lesson_number": 3,
+      "level": "N5",
+      "title": "ここは どこですか",
+      "title_vi": "Đây là đâu?",
+      "grammar_focus": "ここ・そこ・あそこ, 〜は どこですか",
+      "vocabulary": [
+        {
+          "id": "n5_l3_001",
+          "japanese": "ここ",
+          "reading": "ここ",
+          "romaji": "koko",
+          "meaning_vi": "ở đây / chỗ này",
+          "example_ja": "ここはどこですか？",
+          "example_vi": "Đây là đâu?",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l3_002",
+          "japanese": "そこ",
+          "reading": "そこ",
+          "romaji": "soko",
+          "meaning_vi": "ở đó / chỗ đó",
+          "example_ja": "トイレはそこです。",
+          "example_vi": "Nhà vệ sinh ở chỗ đó.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l3_003",
+          "japanese": "あそこ",
+          "reading": "あそこ",
+          "romaji": "asoko",
+          "meaning_vi": "ở kia / chỗ kia",
+          "example_ja": "えきはあそこです。",
+          "example_vi": "Nhà ga ở chỗ kia.",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l3_004",
+          "japanese": "どこ",
+          "reading": "どこ",
+          "romaji": "doko",
+          "meaning_vi": "ở đâu",
+          "example_ja": "トイレはどこですか？",
+          "example_vi": "Nhà vệ sinh ở đâu?",
+          "word_type": "danh từ"
+        },
+        {
+          "id": "n5_l3_005",
+          "japanese": "えき",
+          "reading": "えき",
+          "romaji": "eki",
+          "meaning_vi": "nhà ga / bến tàu",
+          "example_ja": "えきはあそこです。",
+          "example_vi": "Nhà ga ở chỗ kia.",
+          "word_type": "danh từ"
+        }
+      ],
+      "grammar_points": [
+        {
+          "pattern": "ここ・そこ・あそこ は ～です",
+          "explanation_vi": "Chỉ định địa điểm theo khoảng cách tương tự これ/それ/あれ.",
+          "examples": [
+            "ここはにほんです。(Đây là Nhật Bản.)",
+            "トイレはそこです。(Nhà vệ sinh ở chỗ đó.)",
+            "えきはあそこです。(Nhà ga ở chỗ kia.)"
+          ]
+        },
+        {
+          "pattern": "～は どこですか？",
+          "explanation_vi": "Hỏi địa điểm: ~ ở đâu?",
+          "examples": [
+            "トイレはどこですか？(Nhà vệ sinh ở đâu?)",
+            "えきはどこですか？(Nhà ga ở đâu?)"
+          ]
+        }
+      ],
+      "listening_exercises": [
+        {
+          "id": "n5_l3_listen_001",
+          "title": "Hội thoại: Hỏi đường",
+          "transcript": [
+            {"speaker": "マリア", "text": "すみません、えきはどこですか？"},
+            {"speaker": "つうこうにん", "text": "えきですか？えきはあそこです。"},
+            {"speaker": "マリア", "text": "ありがとうございます。トイレはどこですか？"},
+            {"speaker": "つうこうにん", "text": "トイレはここのちかくです。あのたてもののなかです。"},
+            {"speaker": "マリア", "text": "そうですか。ありがとうございます。"}
+          ],
+          "questions": [
+            {
+              "question_vi": "Nhà ga ở đâu?",
+              "options_vi": ["Ở đây", "Ở chỗ đó", "Ở chỗ kia", "Không biết"],
+              "correct_index": 2
+            },
+            {
+              "question_vi": "Nhà vệ sinh ở đâu?",
+              "options_vi": ["Ở chỗ kia", "Trong tòa nhà đó", "Ở nhà ga", "Không có"],
+              "correct_index": 1
+            }
+          ]
+        }
+      ],
+      "speaking_exercises": [
+        {
+          "id": "n5_l3_speak_001",
+          "instruction_vi": "Hỏi địa điểm:",
+          "template": "すみません、トイレはどこですか？",
+          "example_text": "すみません、トイレはどこですか？",
+          "example_romaji": "Sumimasen, toire wa doko desu ka?",
+          "example_vi": "Xin lỗi, nhà vệ sinh ở đâu ạ?"
+        }
+      ]
+    }
+  ]
+}
