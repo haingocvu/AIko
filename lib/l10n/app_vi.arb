@@ -1,0 +1,33 @@
+{
+  "@@locale": "vi",
+  "appTitle": "AIko",
+  "appSubtitle": "Trợ lý học tiếng Nhật",
+  "alphabetTitle": "Bảng chữ cái",
+  "alphabetSubtitle": "Trợ lý học bảng chữ cái",
+  "practice": "LUYỆN TẬP",
+  "settings": "Cài đặt",
+  "appearance": "Giao diện",
+  "darkMode": "Chế độ tối (AIko Standard)",
+  "darkModeDesc": "Sử dụng màu sắc neon trên nền tối Cyber Navy",
+  "language": "Ngôn ngữ",
+  "vietnamese": "Tiếng Việt",
+  "english": "English",
+  "hiragana": "Hiragana",
+  "katakana": "Katakana",
+  "basicSounds": "Âm cơ bản",
+  "dakuonSounds": "Âm đục & Bán đục",
+  "check": "KIỂM TRA",
+  "continueText": "TIẾP TỤC",
+  "correct": "Chính xác!",
+  "incorrect": "Sai rồi. Đáp án: {answer}",
+  "@incorrect": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "listenAndChoose": "Nghe và chọn đáp án đúng",
+  "chooseCorrectReading": "Chọn cách đọc đúng",
+  "chooseCorrectKana": "Chọn chữ cái đúng"
+}

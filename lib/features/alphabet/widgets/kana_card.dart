@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import '../../../core/app_theme.dart';
+import '../../../core/providers/settings_provider.dart';
 import '../../../data/models/kana_model.dart';
 
 class KanaCard extends StatelessWidget {
@@ -19,9 +21,18 @@ class KanaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final settings = context.watch<SettingsProvider>();
+    final isDark = settings.isDarkMode;
+
     if (kana.isEmpty) {
       return const SizedBox.shrink();
     }
+
+    final accentColor = kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta;
+    final cardBg = (isDark ? Colors.white : Colors.black).withOpacity(0.08);
+    final borderColor = (isDark ? Colors.white : Colors.black).withOpacity(0.12);
+    final textColor = isDark ? Colors.white : AppTheme.textPrimaryLight;
+    final subTextColor = isDark ? AppTheme.textSecondaryDark : AppTheme.textSecondaryLight;
 
     return GestureDetector(
       onTap: _speak,
@@ -29,22 +40,21 @@ class KanaCard extends StatelessWidget {
         cursor: SystemMouseCursors.click,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.08),
+            color: cardBg,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.white.withOpacity(0.12), width: 1),
-            boxShadow: [
+            border: Border.all(color: borderColor, width: 1),
+            boxShadow: isDark ? [
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
-            ],
+            ] : null,
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Stack(
               children: [
-                // Subtle background glow
                 Positioned(
                   top: -20,
                   right: -20,
@@ -53,7 +63,7 @@ class KanaCard extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: (kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta).withOpacity(0.15),
+                      color: accentColor.withOpacity(0.1),
                     ),
                   ),
                 ),
@@ -66,14 +76,14 @@ class KanaCard extends StatelessWidget {
                         style: AppTheme.japaneseStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: textColor,
                         ).copyWith(
-                          shadows: [
+                          shadows: isDark ? [
                             Shadow(
-                              color: (kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta).withOpacity(0.5),
+                              color: accentColor.withOpacity(0.5),
                               blurRadius: 10,
                             ),
-                          ],
+                          ] : null,
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -81,7 +91,7 @@ class KanaCard extends StatelessWidget {
                         kana.romaji,
                         style: TextStyle(
                           fontSize: 13,
-                          color: AppTheme.textSecondary.withOpacity(0.8),
+                          color: subTextColor.withOpacity(0.8),
                           fontWeight: FontWeight.w600,
                           letterSpacing: 0.5,
                         ),
@@ -95,7 +105,7 @@ class KanaCard extends StatelessWidget {
         ),
       ),
     ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-     .shimmer(duration: 4.seconds, color: (kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta).withOpacity(0.1))
+     .shimmer(duration: 4.seconds, color: accentColor.withOpacity(0.1))
      .animate(target: 1)
      .scale(duration: 200.ms, curve: Curves.easeOut);
   }

@@ -1,0 +1,33 @@
+{
+  "@@locale": "en",
+  "appTitle": "AIko",
+  "appSubtitle": "Japanese Assistant",
+  "alphabetTitle": "Alphabet",
+  "alphabetSubtitle": "Alphabet Learning Assistant",
+  "practice": "PRACTICE",
+  "settings": "Settings",
+  "appearance": "Appearance",
+  "darkMode": "Dark Mode (AIko Standard)",
+  "darkModeDesc": "Neon colors on Cyber Navy background",
+  "language": "Language",
+  "vietnamese": "Vietnamese",
+  "english": "English",
+  "hiragana": "Hiragana",
+  "katakana": "Katakana",
+  "basicSounds": "Basic Sounds",
+  "dakuonSounds": "Dakuon & Handakuon",
+  "check": "CHECK",
+  "continueText": "CONTINUE",
+  "correct": "Correct!",
+  "incorrect": "Wrong. Answer: {answer}",
+  "@incorrect": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "listenAndChoose": "Listen and choose correct answer",
+  "chooseCorrectReading": "Choose correct reading",
+  "chooseCorrectKana": "Choose correct character"
+}

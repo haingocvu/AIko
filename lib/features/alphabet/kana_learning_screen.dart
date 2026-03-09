@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import '../../core/app_theme.dart';
+import '../../core/providers/settings_provider.dart';
 import '../../data/models/kana_model.dart';
 import '../../data/repositories/kana_repository.dart';
+import '../../l10n/app_localizations.dart';
 
 enum QuestionType {
   audioToRomaji,
@@ -119,11 +122,17 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
     final question = _questions[_currentIndex];
     final progress = (_currentIndex) / _questions.length;
 
+    final settings = context.watch<SettingsProvider>();
+    final isDark = settings.isDarkMode;
+    final textColor = isDark ? Colors.white : AppTheme.textPrimaryLight;
+    final accentColor = isDark ? AppTheme.accentCyan : AppTheme.accentBlue;
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      backgroundColor: Colors.transparent, // Let the background container show
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.close_rounded, color: Colors.white),
+          icon: Icon(Icons.close_rounded, color: textColor),
           onPressed: () => context.pop(),
         ),
         title: Container(
@@ -132,8 +141,8 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             borderRadius: BorderRadius.circular(8),
             child: LinearProgressIndicator(
               value: progress,
-              backgroundColor: Colors.white.withOpacity(0.1),
-              valueColor: const AlwaysStoppedAnimation(AppTheme.accentCyan),
+              backgroundColor: (isDark ? Colors.white : Colors.black).withOpacity(0.1),
+              valueColor: AlwaysStoppedAnimation(accentColor),
               minHeight: 12,
             ),
           ),
@@ -143,7 +152,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
       ),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: const BoxDecoration(gradient: AppTheme.premiumGradient),
+        decoration: BoxDecoration(gradient: AppTheme.premiumGradient(isDark)),
         child: SafeArea(
           child: Column(
             children: [
@@ -155,22 +164,22 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
                     children: [
                       const SizedBox(height: 20),
                       Text(
-                        _getQuestionTitle(question.type),
+                        _getQuestionTitle(question.type, l10n),
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontSize: 24,
-                          color: AppTheme.accentCyan,
+                          color: accentColor,
                         ),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 48),
-                      _buildQuestionContent(question),
+                      _buildQuestionContent(question, isDark, accentColor),
                       const SizedBox(height: 56),
-                      _buildOptionsGrid(question),
+                      _buildOptionsGrid(question, isDark, accentColor),
                     ],
                   ),
                 ),
               ),
-              _buildBottomBar(),
+              _buildBottomBar(isDark, accentColor, l10n),
             ],
           ),
         ),
@@ -178,18 +187,18 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
     );
   }
 
-  String _getQuestionTitle(QuestionType type) {
+  String _getQuestionTitle(QuestionType type, AppLocalizations l10n) {
     switch (type) {
       case QuestionType.audioToRomaji:
-        return 'Nghe và chọn đáp án đúng';
+        return l10n.listenAndChoose;
       case QuestionType.kanaToRomaji:
-        return 'Chọn cách đọc đúng';
+        return l10n.chooseCorrectReading;
       case QuestionType.romajiToKana:
-        return 'Chọn chữ cái đúng';
+        return l10n.chooseCorrectKana;
     }
   }
 
-  Widget _buildQuestionContent(KanaQuestion question) {
+  Widget _buildQuestionContent(KanaQuestion question, bool isDark, Color accentColor) {
     switch (question.type) {
       case QuestionType.audioToRomaji:
         return Center(
@@ -198,13 +207,13 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             child: Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: AppTheme.accentCyan.withOpacity(0.15),
+                color: accentColor.withOpacity(0.15),
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(color: AppTheme.accentCyan.withOpacity(0.2), blurRadius: 20, spreadRadius: 2),
+                  BoxShadow(color: accentColor.withOpacity(0.2), blurRadius: 20, spreadRadius: 2),
                 ],
               ),
-              child: const Icon(Icons.volume_up_rounded, size: 64, color: AppTheme.accentCyan),
+              child: Icon(Icons.volume_up_rounded, size: 64, color: accentColor),
             ),
           ).animate(onPlay: (c) => c.repeat(reverse: true)).shimmer(duration: 2.seconds).scale(duration: 300.ms, curve: Curves.easeOutBack),
         );
@@ -212,20 +221,20 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
         return Center(
           child: Text(
             question.correctKana.japanese,
-            style: AppTheme.japaneseStyle(fontSize: 80, fontWeight: FontWeight.bold, color: AppTheme.accentCyan),
+            style: AppTheme.japaneseStyle(fontSize: 80, fontWeight: FontWeight.bold, color: accentColor),
           ).animate().fadeIn(duration: 400.ms).slideY(begin: 0.2, end: 0),
         );
       case QuestionType.romajiToKana:
         return Center(
           child: Text(
             question.correctKana.romaji,
-            style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white),
+            style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: isDark ? Colors.white : AppTheme.textPrimaryLight),
           ).animate().fadeIn(duration: 400.ms).slideY(begin: 0.2, end: 0),
         );
     }
   }
 
-  Widget _buildOptionsGrid(KanaQuestion question) {
+  Widget _buildOptionsGrid(KanaQuestion question, bool isDark, Color accentColor) {
     return GridView.count(
       crossAxisCount: 2,
       shrinkWrap: true,
@@ -236,9 +245,10 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
       children: question.options.map((option) {
         final isSelected = _selectedAnswer?.id == option.id;
         final isCorrectOption = option.id == question.correctKana.id;
+        final textColor = isDark ? Colors.white : AppTheme.textPrimaryLight;
         
-        Color borderColor = AppTheme.primaryLight;
-        Color bgColor = AppTheme.surfaceCard;
+        Color borderColor = isDark ? AppTheme.primaryLight : Colors.black.withOpacity(0.1);
+        Color bgColor = (isDark ? Colors.white : Colors.black).withOpacity(0.05);
         
         if (_hasAnswered) {
           if (isCorrectOption) {
@@ -249,8 +259,8 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             bgColor = Colors.red.withOpacity(0.1);
           }
         } else if (isSelected) {
-          borderColor = AppTheme.accentCyan;
-          bgColor = AppTheme.accentCyan.withOpacity(0.1);
+          borderColor = accentColor;
+          bgColor = accentColor.withOpacity(0.1);
         }
 
         String displayText = '';
@@ -280,8 +290,8 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
               child: Text(
                 displayText,
                 style: question.type == QuestionType.romajiToKana
-                    ? AppTheme.japaneseStyle(fontSize: 32, color: Colors.white)
-                    : const TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+                    ? AppTheme.japaneseStyle(fontSize: 32, color: textColor)
+                    : TextStyle(fontSize: 24, fontWeight: FontWeight.w600, color: textColor),
               ),
             ),
           ),
@@ -290,7 +300,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
     );
   }
 
-  Widget _buildBottomBar() {
+  Widget _buildBottomBar(bool isDark, Color accentColor, AppLocalizations l10n) {
     final question = _questions[_currentIndex];
     return Container(
       padding: const EdgeInsets.all(24),
@@ -314,7 +324,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  _isCorrect ? 'Chính xác!' : 'Sai rồi. Đáp án: ${question.type != QuestionType.romajiToKana ? question.correctKana.romaji : question.correctKana.japanese}',
+                  _isCorrect ? l10n.correct : l10n.incorrect(question.type != QuestionType.romajiToKana ? question.correctKana.romaji : question.correctKana.japanese),
                   style: TextStyle(
                     color: _isCorrect ? Colors.green : Colors.red,
                     fontSize: 18,
@@ -332,18 +342,20 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor: _hasAnswered
                   ? (_isCorrect ? Colors.green : Colors.red)
-                  : AppTheme.accentCyan,
-              disabledBackgroundColor: Colors.white.withOpacity(0.1),
+                  : accentColor,
+              disabledBackgroundColor: (isDark ? Colors.white : Colors.black).withOpacity(0.1),
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             ),
             child: Text(
-              !_hasAnswered ? 'KIỂM TRA' : 'TIẾP TỤC',
+              !_hasAnswered ? l10n.check : l10n.continueText,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 1.2,
-                color: (_selectedAnswer == null) ? AppTheme.textHint : Colors.white,
+                color: (_selectedAnswer == null) 
+                  ? (isDark ? AppTheme.textHint : AppTheme.textSecondaryLight) 
+                  : Colors.white,
               ),
             ),
           ),
