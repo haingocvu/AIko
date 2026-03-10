@@ -36,6 +36,10 @@ dependencies:
     sdk: flutter
   intl: any
 
+  # AI & Files
+  google_generative_ai: ^0.4.0
+  path_provider: ^2.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

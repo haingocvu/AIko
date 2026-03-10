@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/app_theme.dart';
 import '../../../core/providers/settings_provider.dart';
 import '../../../data/models/kana_model.dart';
@@ -36,6 +37,10 @@ class KanaCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: _speak,
+      onLongPress: () {
+        if (kana.isEmpty) return;
+        context.push('/alphabet/write', extra: kana);
+      },
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Container(

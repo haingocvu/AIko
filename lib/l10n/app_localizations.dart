@@ -182,6 +182,18 @@ abstract class AppLocalizations {
   /// **'Katakana'**
   String get katakana;
 
+  /// No description provided for @writingPractice.
+  ///
+  /// In vi, this message translates to:
+  /// **'Luyện viết'**
+  String get writingPractice;
+
+  /// No description provided for @clear.
+  ///
+  /// In vi, this message translates to:
+  /// **'Xóa'**
+  String get clear;
+
   /// No description provided for @basicSounds.
   ///
   /// In vi, this message translates to:

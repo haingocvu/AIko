@@ -51,6 +51,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get katakana => 'Katakana';
 
   @override
+  String get writingPractice => 'Writing Practice';
+
+  @override
+  String get clear => 'Clear';
+
+  @override
   String get basicSounds => 'Basic Sounds';
 
   @override

@@ -51,6 +51,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get katakana => 'Katakana';
 
   @override
+  String get writingPractice => 'Luyện viết';
+
+  @override
+  String get clear => 'Xóa';
+
+  @override
   String get basicSounds => 'Âm cơ bản';
 
   @override
