@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../core/app_theme.dart';
+import '../../core/config.dart';
 import '../../core/providers/settings_provider.dart';
 import '../../core/services/gemini_service.dart';
 import '../../data/models/kana_model.dart';
@@ -26,8 +27,8 @@ class _WritingPracticeScreenState extends State<WritingPracticeScreen> {
   bool? _isCorrect;
   String? _errorMessage;
 
-  // IMPORTANT: For production, this should come from a secure config/env
-  static const String _tempApiKey = 'AIzaSyBLMYNnEo9dUfKkgKKklMHjdLyKinyW1DI'; 
+  // Key is now loaded from a file ignored by git
+  static const String _tempApiKey = AppConfig.geminiApiKey; 
 
   Future<void> _handleVerify() async {
     final bytes = await _canvasKey.currentState?.captureImage();

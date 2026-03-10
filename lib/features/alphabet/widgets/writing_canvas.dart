@@ -53,26 +53,26 @@ class WritingCanvasState extends State<WritingCanvas> {
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      key: _canvasKey,
-      child: Stack(
-        children: [
-          // Reference Character Background
-          Center(
-            child: Opacity(
-              opacity: 0.1,
-              child: Text(
-                widget.referenceChar,
-                style: const TextStyle(
-                  fontSize: 200,
-                  fontFamily: 'NotoSansJP',
-                  color: Colors.white,
-                ),
+    return Stack(
+      children: [
+        // Reference Character Background (Outside RepaintBoundary)
+        Center(
+          child: Opacity(
+            opacity: 0.1,
+            child: Text(
+              widget.referenceChar,
+              style: const TextStyle(
+                fontSize: 200,
+                fontFamily: 'NotoSansJP',
+                color: Colors.white,
               ),
             ),
           ),
-          // Drawing Layer
-          GestureDetector(
+        ),
+        // Drawing Layer (Inside RepaintBoundary)
+        RepaintBoundary(
+          key: _canvasKey,
+          child: GestureDetector(
             onPanStart: (details) {
               setState(() {
                 _strokes.add([details.localPosition]);
@@ -85,13 +85,16 @@ class WritingCanvasState extends State<WritingCanvas> {
                 });
               }
             },
-            child: CustomPaint(
-              painter: _CanvasPainter(_strokes, widget.strokeColor, widget.strokeWidth),
-              size: Size.infinite,
+            child: Container(
+              color: Colors.transparent, // Interactive area
+              child: CustomPaint(
+                painter: _CanvasPainter(_strokes, widget.strokeColor, widget.strokeWidth),
+                size: Size.infinite,
+              ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -105,6 +108,10 @@ class _CanvasPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // Fill background with solid black for AI to see white strokes clearly
+    final bgPaint = Paint()..color = Colors.black;
+    canvas.drawRect(Offset.zero & size, bgPaint);
+
     final paint = Paint()
       ..color = strokeColor
       ..strokeWidth = strokeWidth

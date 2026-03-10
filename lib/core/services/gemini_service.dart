@@ -19,9 +19,14 @@ class GeminiService {
         Content.multi([
           DataPart('image/png', imageBytes),
           TextPart(
-            'This is a handwritten Japanese character. The target character is "$targetChar". '
-            'Please analyze the image and respond in JSON format with two fields: '
-            '"isCorrect" (boolean) and "score" (integer 0-100 representing the quality/accuracy of the writing). '
+            'Act as a strict Japanese calligraphy teacher. Analyze this handwritten character. '
+            'The target character is "$targetChar". '
+            'Evaluate based on: 1. Correctness of the shape, 2. Proportions and balance, 3. Stroke quality (smoothness). '
+            'Be very strict: if it is messy or slightly off-balance, do not give a high score. '
+            'Return your evaluation in JSON format with: '
+            '"isCorrect" (boolean) and "score" (integer 0-100). '
+            'Score guide: 90+ is near perfect, 70-89 is acceptable, 40-69 is poor, below 40 is incorrect. '
+            'If the drawing is just scribbles or not the character at all, isCorrect should be false and score below 20. '
             'Only respond with the JSON.'
           ),
         ])
