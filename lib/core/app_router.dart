@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../features/alphabet/alphabet_screen.dart';
 import '../features/alphabet/kana_learning_screen.dart';
@@ -24,9 +23,13 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/alphabet/write',
       builder: (context, state) {
-        final kana = state.extra as KanaModel;
+        final kana = state.extra as KanaModel?;
         return WritingPracticeScreen(kana: kana);
       },
+    ),
+    GoRoute(
+      path: '/alphabet/random',
+      builder: (context, state) => const WritingPracticeScreen(isRandomMode: true),
     ),
   ],
 );

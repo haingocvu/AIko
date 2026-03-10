@@ -7,12 +7,14 @@ class WritingCanvas extends StatefulWidget {
   final String referenceChar;
   final Color strokeColor;
   final double strokeWidth;
+  final int level;
 
   const WritingCanvas({
     super.key,
     required this.referenceChar,
     this.strokeColor = Colors.white,
     this.strokeWidth = 8.0,
+    required this.level,
   });
 
   @override
@@ -37,6 +39,10 @@ class WritingCanvasState extends State<WritingCanvas> {
     }
   }
 
+  List<List<Offset>> getStrokes() {
+    return _strokes;
+  }
+
   Future<Uint8List?> captureImage() async {
     try {
       final boundary = _canvasKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
@@ -56,19 +62,27 @@ class WritingCanvasState extends State<WritingCanvas> {
     return Stack(
       children: [
         // Reference Character Background (Outside RepaintBoundary)
-        Center(
-          child: Opacity(
-            opacity: 0.1,
-            child: Text(
-              widget.referenceChar,
-              style: const TextStyle(
-                fontSize: 200,
-                fontFamily: 'NotoSansJP',
-                color: Colors.white,
-              ),
-            ),
+        if (widget.level < 3)
+          Center(
+            child: widget.level == 1 
+              ? Opacity(
+                  opacity: 0.3,
+                  child: _buildRefText(),
+                )
+              : ShaderMask(
+                  shaderCallback: (bounds) => const RadialGradient(
+                    center: Alignment.center,
+                    radius: 0.5,
+                    colors: [Colors.white, Colors.transparent],
+                    stops: [0.3, 0.7],
+                  ).createShader(bounds),
+                  blendMode: BlendMode.dstIn,
+                  child: Opacity(
+                    opacity: 0.3,
+                    child: _buildRefText(),
+                  ),
+                ),
           ),
-        ),
         // Drawing Layer (Inside RepaintBoundary)
         RepaintBoundary(
           key: _canvasKey,
@@ -95,6 +109,17 @@ class WritingCanvasState extends State<WritingCanvas> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildRefText() {
+    return Text(
+      widget.referenceChar,
+      style: const TextStyle(
+        fontSize: 200,
+        fontFamily: 'NotoSansJP',
+        color: Colors.white,
+      ),
     );
   }
 }

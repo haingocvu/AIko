@@ -31,5 +31,18 @@
   },
   "listenAndChoose": "Listen and choose correct answer",
   "chooseCorrectReading": "Choose correct reading",
-  "chooseCorrectKana": "Choose correct character"
+  "chooseCorrectKana": "Choose correct character",
+  "mixedPractice": "MIXED PRACTICE",
+  "level": "Level {level}",
+  "@level": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "tracingMode": "Tracing Mode",
+  "maskMode": "Partial Mask Mode",
+  "blindMode": "Blind Recall Mode",
+  "practiceProgress": "Progress: {count}/50"
 }

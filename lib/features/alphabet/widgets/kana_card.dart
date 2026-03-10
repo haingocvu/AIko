@@ -30,8 +30,8 @@ class KanaCard extends StatelessWidget {
     }
 
     final accentColor = kana.isHiragana ? AppTheme.accentCyan : AppTheme.accentMagenta;
-    final cardBg = (isDark ? Colors.white : Colors.black).withOpacity(0.08);
-    final borderColor = (isDark ? Colors.white : Colors.black).withOpacity(0.12);
+    final cardBg = (isDark ? Colors.white : Colors.black).withValues(alpha: 0.08);
+    final borderColor = (isDark ? Colors.white : Colors.black).withValues(alpha: 0.12);
     final textColor = isDark ? Colors.white : AppTheme.textPrimaryLight;
     final subTextColor = isDark ? AppTheme.textSecondaryDark : AppTheme.textSecondaryLight;
 
@@ -50,7 +50,7 @@ class KanaCard extends StatelessWidget {
             border: Border.all(color: borderColor, width: 1),
             boxShadow: isDark ? [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -68,7 +68,7 @@ class KanaCard extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: accentColor.withOpacity(0.1),
+                      color: accentColor.withValues(alpha: 0.1),
                     ),
                   ),
                 ),
@@ -85,7 +85,7 @@ class KanaCard extends StatelessWidget {
                         ).copyWith(
                           shadows: isDark ? [
                             Shadow(
-                              color: accentColor.withOpacity(0.5),
+                              color: accentColor.withValues(alpha: 0.5),
                               blurRadius: 10,
                             ),
                           ] : null,
@@ -96,7 +96,7 @@ class KanaCard extends StatelessWidget {
                         kana.romaji,
                         style: TextStyle(
                           fontSize: 13,
-                          color: subTextColor.withOpacity(0.8),
+                          color: subTextColor.withValues(alpha: 0.8),
                           fontWeight: FontWeight.w600,
                           letterSpacing: 0.5,
                         ),
@@ -110,7 +110,7 @@ class KanaCard extends StatelessWidget {
         ),
       ),
     ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-     .shimmer(duration: 4.seconds, color: accentColor.withOpacity(0.1))
+     .shimmer(duration: 4.seconds, color: accentColor.withValues(alpha: 0.1))
      .animate(target: 1)
      .scale(duration: 200.ms, curve: Curves.easeOut);
   }

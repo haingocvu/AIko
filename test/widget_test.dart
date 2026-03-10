@@ -5,7 +5,7 @@ import 'package:nihongo_app/main.dart';
 
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {
-    await tester.pumpWidget(const NihonGoApp());
+    await tester.pumpWidget(const AIkoApp());
     expect(find.byType(MaterialApp), findsOneWidget);
   });
 }

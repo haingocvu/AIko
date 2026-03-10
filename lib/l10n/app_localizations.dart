@@ -247,6 +247,42 @@ abstract class AppLocalizations {
   /// In vi, this message translates to:
   /// **'Chọn chữ cái đúng'**
   String get chooseCorrectKana;
+
+  /// No description provided for @mixedPractice.
+  ///
+  /// In vi, this message translates to:
+  /// **'LUYỆN TẬP TỔNG HỢP'**
+  String get mixedPractice;
+
+  /// No description provided for @level.
+  ///
+  /// In vi, this message translates to:
+  /// **'Cấp độ {level}'**
+  String level(int level);
+
+  /// No description provided for @tracingMode.
+  ///
+  /// In vi, this message translates to:
+  /// **'Chế độ đồ nét'**
+  String get tracingMode;
+
+  /// No description provided for @maskMode.
+  ///
+  /// In vi, this message translates to:
+  /// **'Chế độ điền nét'**
+  String get maskMode;
+
+  /// No description provided for @blindMode.
+  ///
+  /// In vi, this message translates to:
+  /// **'Chế độ viết từ nhớ'**
+  String get blindMode;
+
+  /// No description provided for @practiceProgress.
+  ///
+  /// In vi, this message translates to:
+  /// **'Tiến trình: {count}/50'**
+  String practiceProgress(Object count);
 }
 
 class _AppLocalizationsDelegate

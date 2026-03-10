@@ -31,5 +31,18 @@
   },
   "listenAndChoose": "Nghe và chọn đáp án đúng",
   "chooseCorrectReading": "Chọn cách đọc đúng",
-  "chooseCorrectKana": "Chọn chữ cái đúng"
+  "chooseCorrectKana": "Chọn chữ cái đúng",
+  "mixedPractice": "LUYỆN TẬP TỔNG HỢP",
+  "level": "Cấp độ {level}",
+  "@level": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "tracingMode": "Chế độ đồ nét",
+  "maskMode": "Chế độ điền nét",
+  "blindMode": "Chế độ viết từ nhớ",
+  "practiceProgress": "Tiến trình: {count}/50"
 }

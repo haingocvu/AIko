@@ -141,7 +141,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             borderRadius: BorderRadius.circular(8),
             child: LinearProgressIndicator(
               value: progress,
-              backgroundColor: (isDark ? Colors.white : Colors.black).withOpacity(0.1),
+              backgroundColor: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1),
               valueColor: AlwaysStoppedAnimation(accentColor),
               minHeight: 12,
             ),
@@ -207,10 +207,10 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
             child: Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: accentColor.withOpacity(0.15),
+                color: accentColor.withValues(alpha: 0.15),
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(color: accentColor.withOpacity(0.2), blurRadius: 20, spreadRadius: 2),
+                  BoxShadow(color: accentColor.withValues(alpha: 0.2), blurRadius: 20, spreadRadius: 2),
                 ],
               ),
               child: Icon(Icons.volume_up_rounded, size: 64, color: accentColor),
@@ -247,20 +247,20 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
         final isCorrectOption = option.id == question.correctKana.id;
         final textColor = isDark ? Colors.white : AppTheme.textPrimaryLight;
         
-        Color borderColor = isDark ? AppTheme.primaryLight : Colors.black.withOpacity(0.1);
-        Color bgColor = (isDark ? Colors.white : Colors.black).withOpacity(0.05);
+        Color borderColor = isDark ? AppTheme.primaryLight : Colors.black.withValues(alpha: 0.1);
+        Color bgColor = (isDark ? Colors.white : Colors.black).withValues(alpha: 0.05);
         
         if (_hasAnswered) {
           if (isCorrectOption) {
             borderColor = Colors.green;
-            bgColor = Colors.green.withOpacity(0.1);
+            bgColor = Colors.green.withValues(alpha: 0.1);
           } else if (isSelected && !isCorrectOption) {
             borderColor = Colors.red;
-            bgColor = Colors.red.withOpacity(0.1);
+            bgColor = Colors.red.withValues(alpha: 0.1);
           }
         } else if (isSelected) {
           borderColor = accentColor;
-          bgColor = accentColor.withOpacity(0.1);
+          bgColor = accentColor.withValues(alpha: 0.1);
         }
 
         String displayText = '';
@@ -306,9 +306,9 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: _hasAnswered
-            ? (_isCorrect ? Colors.green.withOpacity(0.1) : Colors.red.withOpacity(0.1))
+            ? (_isCorrect ? Colors.green.withValues(alpha: 0.1) : Colors.red.withValues(alpha: 0.1))
             : Colors.transparent,
-        border: Border(top: BorderSide(color: AppTheme.primaryLight.withOpacity(0.3))),
+        border: Border(top: BorderSide(color: AppTheme.primaryLight.withValues(alpha: 0.3))),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -343,7 +343,7 @@ class _KanaLearningScreenState extends State<KanaLearningScreen> {
               backgroundColor: _hasAnswered
                   ? (_isCorrect ? Colors.green : Colors.red)
                   : accentColor,
-              disabledBackgroundColor: (isDark ? Colors.white : Colors.black).withOpacity(0.1),
+              disabledBackgroundColor: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1),
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             ),

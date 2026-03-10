@@ -84,4 +84,26 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get chooseCorrectKana => 'Chọn chữ cái đúng';
+
+  @override
+  String get mixedPractice => 'LUYỆN TẬP TỔNG HỢP';
+
+  @override
+  String level(int level) {
+    return 'Cấp độ $level';
+  }
+
+  @override
+  String get tracingMode => 'Chế độ đồ nét';
+
+  @override
+  String get maskMode => 'Chế độ điền nét';
+
+  @override
+  String get blindMode => 'Chế độ viết từ nhớ';
+
+  @override
+  String practiceProgress(Object count) {
+    return 'Tiến trình: $count/50';
+  }
 }

@@ -35,7 +35,7 @@ class SettingsScreen extends StatelessWidget {
                       trailing: Switch(
                         value: isDark,
                         onChanged: (_) => settings.toggleTheme(),
-                        activeColor: AppTheme.accentCyan,
+                        activeThumbColor: AppTheme.accentCyan,
                       ),
                       isDark: isDark,
                     ),
@@ -100,9 +100,9 @@ class SettingsScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: (isDark ? Colors.white : Colors.black).withOpacity(0.05),
+        color: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: (isDark ? Colors.white : Colors.black).withOpacity(0.1)),
+        border: Border.all(color: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1)),
       ),
       child: Row(
         children: [
@@ -138,9 +138,9 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildLanguageCard(SettingsProvider settings, bool isDark, AppLocalizations l10n) {
     return Container(
       decoration: BoxDecoration(
-        color: (isDark ? Colors.white : Colors.black).withOpacity(0.05),
+        color: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: (isDark ? Colors.white : Colors.black).withOpacity(0.1)),
+        border: Border.all(color: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1)),
       ),
       child: Column(
         children: [
@@ -151,7 +151,7 @@ class SettingsScreen extends StatelessWidget {
             isDark: isDark,
             isFirst: true,
           ),
-          Divider(height: 1, color: (isDark ? Colors.white : Colors.black).withOpacity(0.1)),
+          Divider(height: 1, color: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1)),
           _buildLanguageOption(
             title: l10n.english,
             isSelected: settings.locale.languageCode == 'en',

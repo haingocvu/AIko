@@ -84,4 +84,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chooseCorrectKana => 'Choose correct character';
+
+  @override
+  String get mixedPractice => 'MIXED PRACTICE';
+
+  @override
+  String level(int level) {
+    return 'Level $level';
+  }
+
+  @override
+  String get tracingMode => 'Tracing Mode';
+
+  @override
+  String get maskMode => 'Partial Mask Mode';
+
+  @override
+  String get blindMode => 'Blind Recall Mode';
+
+  @override
+  String practiceProgress(Object count) {
+    return 'Progress: $count/50';
+  }
 }

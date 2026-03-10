@@ -49,20 +49,39 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.push('/alphabet/learn'),
-        backgroundColor: isDark ? AppTheme.accentCyan : AppTheme.accentBlue,
-        elevation: 8,
-        icon: Icon(Icons.psychology_rounded, color: isDark ? AppTheme.primaryDeep : Colors.white, size: 28),
-        label: Text(
-          l10n.practice,
-          style: TextStyle(
-            color: isDark ? AppTheme.primaryDeep : Colors.white,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1.2,
-          ),
-        ),
-      ).animate().scale(delay: 600.ms, duration: 400.ms, curve: Curves.easeOutBack),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton.extended(
+            heroTag: 'random_practice',
+            onPressed: () => context.push('/alphabet/random'),
+            backgroundColor: AppTheme.accentMagenta,
+            elevation: 8,
+            icon: const Icon(Icons.draw_rounded, color: Colors.white, size: 28),
+            label: const Text(
+              'MIXED PRACTICE',
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800, letterSpacing: 1.2),
+            ),
+          ).animate().scale(delay: 400.ms, duration: 400.ms, curve: Curves.easeOutBack),
+          const SizedBox(height: 16),
+          FloatingActionButton.extended(
+            heroTag: 'learn_mode',
+            onPressed: () => context.push('/alphabet/learn'),
+            backgroundColor: isDark ? AppTheme.accentCyan : AppTheme.accentBlue,
+            elevation: 8,
+            icon: Icon(Icons.psychology_rounded, color: isDark ? AppTheme.primaryDeep : Colors.white, size: 28),
+            label: Text(
+              l10n.practice,
+              style: TextStyle(
+                color: isDark ? AppTheme.primaryDeep : Colors.white,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1.2,
+              ),
+            ),
+          ).animate().scale(delay: 600.ms, duration: 400.ms, curve: Curves.easeOutBack),
+        ],
+      ),
     );
   }
 
@@ -83,7 +102,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                 ShaderMask(
                   shaderCallback: (bounds) => (isDark 
                     ? AppTheme.accentGradient 
-                    : LinearGradient(colors: [AppTheme.accentBlue, AppTheme.accentBlue.withOpacity(0.8)])
+                    : LinearGradient(colors: [AppTheme.accentBlue, AppTheme.accentBlue.withValues(alpha: 0.8)])
                   ).createShader(bounds),
                   child: Text(
                     l10n.appTitle,
@@ -98,7 +117,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                 Text(
                   l10n.alphabetSubtitle,
                   style: TextStyle(
-                    color: (isDark ? AppTheme.accentCyan : AppTheme.accentBlue).withOpacity(0.7),
+                    color: (isDark ? AppTheme.accentCyan : AppTheme.accentBlue).withValues(alpha: 0.7),
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                     letterSpacing: 0.5,
@@ -117,11 +136,11 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: iconColor.withOpacity(0.1),
+                  color: iconColor.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: iconColor.withOpacity(0.15),
+                      color: iconColor.withValues(alpha: 0.15),
                       blurRadius: 20,
                       spreadRadius: 2,
                     ),
@@ -130,7 +149,7 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
                 child: Icon(Icons.auto_awesome_rounded, color: iconColor, size: 28),
               ).animate(onPlay: (c) => c.repeat(reverse: true))
                .scale(duration: 2.seconds, begin: const Offset(1, 1), end: const Offset(1.15, 1.15), curve: Curves.easeInOut)
-               .shimmer(duration: 3.seconds, color: iconColor.withOpacity(0.5)),
+               .shimmer(duration: 3.seconds, color: iconColor.withValues(alpha: 0.5)),
             ],
           ),
         ],
@@ -139,9 +158,8 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
   }
 
   Widget _buildToggle(bool isDark, AppLocalizations l10n) {
-    final bgColor = (isDark ? Colors.black : Colors.black).withOpacity(isDark ? 0.2 : 0.05);
-    final borderColor = (isDark ? Colors.white : Colors.black).withOpacity(0.1);
-    final indicatorColor = isDark ? AppTheme.accentCyan : AppTheme.accentBlue;
+    final bgColor = (isDark ? Colors.black : Colors.black).withValues(alpha: isDark ? 0.2 : 0.05);
+    final borderColor = (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1);
     final secondaryTextColor = isDark ? AppTheme.textSecondaryDark : AppTheme.textSecondaryLight;
 
     return Container(
@@ -162,10 +180,10 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
               width: MediaQuery.of(context).size.width * 0.43,
               margin: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                gradient: isDark ? AppTheme.accentGradient : LinearGradient(colors: [AppTheme.accentBlue, AppTheme.accentBlue.withOpacity(0.8)]),
+                gradient: isDark ? AppTheme.accentGradient : LinearGradient(colors: [AppTheme.accentBlue, AppTheme.accentBlue.withValues(alpha: 0.8)]),
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: isDark ? [
-                  BoxShadow(color: AppTheme.accentCyan.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 4)),
+                  BoxShadow(color: AppTheme.accentCyan.withValues(alpha: 0.3), blurRadius: 10, offset: const Offset(0, 4)),
                 ] : null,
               ),
             ),
@@ -248,9 +266,9 @@ class _AlphabetScreenState extends State<AlphabetScreen> {
       children: [
         Text(main, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: textColor)),
         const SizedBox(width: 8),
-        Text('($sub)', style: TextStyle(fontSize: 14, color: accentColor.withOpacity(0.7), fontWeight: FontWeight.w500)),
+        Text('($sub)', style: TextStyle(fontSize: 14, color: accentColor.withValues(alpha: 0.7), fontWeight: FontWeight.w500)),
         const SizedBox(width: 12),
-        Expanded(child: Divider(color: (isDark ? Colors.white : Colors.black).withOpacity(0.1))),
+        Expanded(child: Divider(color: (isDark ? Colors.white : Colors.black).withValues(alpha: 0.1))),
       ],
     );
   }
